@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMagic - Tu Portal de Cine</title>
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="icon" type="image/png" href="imagenes/logo-fav.png?v=99">
+
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="imagenes/Cnlogo.png">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal -->
+    <header class="main-header">
+        <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
+            <!-- Logo circular agregado al encabezado -->
+            <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
+        </div>
+        
+        <div class="header-actions">
+            <a href="login.html" class="user-profile-btn" aria-label="Iniciar Sesión" title="Iniciar Sesión">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <button id="menu-toggle" class="hamburger-btn" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <aside id="side-menu" class="nav-sidebar">
+        <div class="sidebar-header">
+            <h3>Menú <span>CineMagic</span></h3>
+            <button id="menu-close" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="menu-links">
+            <ul>
+                <li><a href="#estrenos"><i class="fa-solid fa-fire"></i> Nuevos Estrenos</a></li>
+                <li><a href="#cartelera"><i class="fa-solid fa-film"></i> Cartelera Completa</a></li>
+                <li><a href="#"><i class="fa-solid fa-couch"></i> Butacas D-BOX</a></li>
+                <li><a href="#"><i class="fa-solid fa-popcorn"></i> Promos & Combos</a></li>
+                <li><a href="login.html"><i class="fa-solid fa-user"></i> Mi Cuenta / Login</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="cinema-banner" class="main-banner">
+        <section class="banner-overlay">
+            <article class="banner-content">
+                <span class="badge-epet">Disfruta de la mejor experiencia con la gente que más querés</span>
+                <h2 id="cinema-title">Backrooms</h2>
+                <p id="cinema-subtitle">VIVÍ LA EXPERIENCIA EN NUESTRA PANTALLA GIGANTE XD</p>
+                <p id="cinema-desc">No deberías estar aquí. Súmale movimiento con nuestras butacas D-BOX.</p>
+                
+                <div class="banner-actions">
+                    <button class="btn btn-primary"><i class="fa-solid fa-ticket"></i> Comprar Entradas</button>
+                    <button class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Más Información</button>
+                </div>
+            </article>
+        </section>
+
+        <button id="prev-btn" class="carousel-control prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="next-btn" class="carousel-control next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div id="dots-container" class="carousel-dots"></div>
+    </div>
+
+    <main class="contenedor">
+        <section id="estrenos" class="section-block">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-star icon-accent"></i> Estrenos Destacados</h2>
+                <p>Las novedades más esperadas de la semana</p>
+            </div>
+            <div class="estrenos-grid" id="estrenos-container"></div>
+        </section>
+
+        <section id="cartelera" class="section-block">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-film icon-accent"></i> Cartelera Completa</h2>
+                <p>Explora todas las películas disponibles en nuestras salas</p>
+            </div>
+
+            <div class="filters-bar">
+                <button class="filter-btn active" data-genre="all">Todos</button>
+                <button class="filter-btn" data-genre="Acción">Acción</button>
+                <button class="filter-btn" data-genre="Ciencia Ficción">Ciencia Ficción</button>
+                <button class="filter-btn" data-genre="Familia">Familia</button>
+                <button class="filter-btn" data-genre="Terror">Terror</button>
+                <button class="filter-btn" data-genre="Drama">Drama</button>
+            </div>
+
+            <div class="movies-grid" id="movies-container"></div>
+        </section>
+    </main>
+
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>© 2026 CineMagic. Disfruta con las personas que más querés con la mejor comodidad.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
