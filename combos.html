@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMagic - Promos y CandyStore</title>
+    <link rel="icon" type="image/png" href="imagenes/Cnlogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="combos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
+            <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
+        </div>
+        <a href="butacas.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cambiar Butacas</a>
+    </header>
+
+    <main class="contenedor">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-popcorn icon-accent"></i> CandyStore y Snacks</h2>
+            <p>Elige tus pochoclos, bebidas y golosinas para disfrutar durante la funcion</p>
+        </div>
+
+        <div class="combos-grid" id="candystore-container"></div>
+
+        <div class="checkout-summary-box">
+            <h3><i class="fa-solid fa-receipt"></i> Resumen de tu Pedido</h3>
+            <div id="summary-details">Cargando datos...</div>
+            <button id="btn-ir-pago" class="btn btn-primary btn-block" style="margin-top: 20px;" onclick="irAlPago()">
+                Ir a Pagar <i class="fa-solid fa-credit-card"></i>
+            </button>
+        </div>
+    </main>
+
+    <script src="combos.js"></script>
+</body>
+</html>

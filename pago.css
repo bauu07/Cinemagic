@@ -1,0 +1,16 @@
+.checkout-info-box {
+    background: rgba(58, 117, 196, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.checkout-info-box p {
+    margin: 0 0 5px 0;
+    color: #ccc;
+}
+
+.checkout-info-box h3 {
+    margin: 0;
+    color: #3a75c4;
+}

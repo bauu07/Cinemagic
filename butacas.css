@@ -1,0 +1,100 @@
+.seating-container {
+    background: #0b0f19;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #3a75c4;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.screen-container {
+    perspective: 400px;
+    margin: 25px 0 35px 0;
+}
+
+.screen {
+    background: #ffffff;
+    height: 14px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 3px 20px rgba(255, 255, 255, 0.8);
+    color: #111;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.seat-sample {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.seat-sample.available { background: #2c3e50; border: 1px solid #3a75c4; }
+.seat-sample.selected { background: #3a75c4; }
+.seat-sample.occupied { background: #e74c3c; }
+
+.seats-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    max-width: 480px;
+    margin: 0 auto 30px auto;
+}
+
+.seat {
+    aspect-ratio: 1;
+    background: #2c3e50;
+    border: 1px solid #3a75c4;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.seat:hover:not(.occupied) {
+    transform: scale(1.1);
+    background: #3a75c4;
+}
+
+.seat.selected {
+    background: #3a75c4;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(58, 117, 196, 0.8);
+}
+
+.seat.occupied {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.seating-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    text-align: left;
+}

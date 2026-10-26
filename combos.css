@@ -1,0 +1,56 @@
+.combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.combo-card {
+    background: #0b0f19;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(58, 117, 196, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.combo-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.combo-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.combo-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.combo-info p {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.combo-info .price {
+    color: #3a75c4;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.checkout-summary-box {
+    background: #0b0f19;
+    border: 2px solid #3a75c4;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 550px;
+    margin: 0 auto;
+}
