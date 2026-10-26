@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineMagic - Tu Portal de Cine</title>
     <link rel="stylesheet" href="index.css">
-
     <link rel="icon" type="image/png" href="imagenes/logo-fav.png?v=99">
-
     <link id="dynamic-favicon" rel="icon" type="image/png" href="imagenes/Cnlogo.png">  
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,16 +14,18 @@
     <!-- Encabezado Principal -->
     <header class="main-header">
         <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
-            <!-- Logo circular agregado al encabezado -->
             <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
             <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
         </div>
         
         <div class="header-actions">
-            <a href="login.html" class="user-profile-btn" aria-label="Iniciar Sesión" title="Iniciar Sesión">
+            <a href="combos.html" class="cart-btn" title="CandyStore y Carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="login.html" class="user-profile-btn" aria-label="Iniciar Sesion" title="Iniciar Sesion">
                 <i class="fa-solid fa-user"></i>
             </a>
-            <button id="menu-toggle" class="hamburger-btn" aria-label="Abrir menú">
+            <button id="menu-toggle" class="hamburger-btn" aria-label="Abrir menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -36,31 +35,32 @@
 
     <aside id="side-menu" class="nav-sidebar">
         <div class="sidebar-header">
-            <h3>Menú <span>CineMagic</span></h3>
+            <h3>Menu <span>CineMagic</span></h3>
             <button id="menu-close" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <nav class="menu-links">
             <ul>
                 <li><a href="#estrenos"><i class="fa-solid fa-fire"></i> Nuevos Estrenos</a></li>
                 <li><a href="#cartelera"><i class="fa-solid fa-film"></i> Cartelera Completa</a></li>
-                <li><a href="#"><i class="fa-solid fa-couch"></i> Butacas D-BOX</a></li>
-                <li><a href="#"><i class="fa-solid fa-popcorn"></i> Promos & Combos</a></li>
+                <li><a href="combos.html"><i class="fa-solid fa-popcorn"></i> Promos y Combos</a></li>
                 <li><a href="login.html"><i class="fa-solid fa-user"></i> Mi Cuenta / Login</a></li>
             </ul>
         </nav>
     </aside>
 
+    <!-- Banner Principal con Carrusel -->
     <div id="cinema-banner" class="main-banner">
         <section class="banner-overlay">
             <article class="banner-content">
-                <span class="badge-epet">Disfruta de la mejor experiencia con la gente que más querés</span>
+                <span class="badge-epet">Disfruta de la mejor experiencia con la gente que mas queres</span>
                 <h2 id="cinema-title">Backrooms</h2>
-                <p id="cinema-subtitle">VIVÍ LA EXPERIENCIA EN NUESTRA PANTALLA GIGANTE XD</p>
-                <p id="cinema-desc">No deberías estar aquí. Súmale movimiento con nuestras butacas D-BOX.</p>
+                <p id="cinema-subtitle">VIVI LA EXPERIENCIA EN NUESTRA PANTALLA GIGANTE XD</p>
+                <p id="cinema-desc">No deberias estar aqui. Sumale movimiento con nuestras butacas D-BOX.</p>
                 
                 <div class="banner-actions">
-                    <button class="btn btn-primary"><i class="fa-solid fa-ticket"></i> Comprar Entradas</button>
-                    <button class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Más Información</button>
+                    <button class="btn btn-primary" onclick="irAButacasDirecto('Backrooms', '22:00 D-BOX', 4500)">
+                        <i class="fa-solid fa-ticket"></i> Comprar Entradas
+                    </button>
                 </div>
             </article>
         </section>
@@ -71,11 +71,12 @@
         <div id="dots-container" class="carousel-dots"></div>
     </div>
 
+    <!-- Contenido Principal de Peliculas -->
     <main class="contenedor">
         <section id="estrenos" class="section-block">
             <div class="section-header">
                 <h2><i class="fa-solid fa-star icon-accent"></i> Estrenos Destacados</h2>
-                <p>Las novedades más esperadas de la semana</p>
+                <p>Las novedades mas esperadas de la semana</p>
             </div>
             <div class="estrenos-grid" id="estrenos-container"></div>
         </section>
@@ -83,13 +84,13 @@
         <section id="cartelera" class="section-block">
             <div class="section-header">
                 <h2><i class="fa-solid fa-film icon-accent"></i> Cartelera Completa</h2>
-                <p>Explora todas las películas disponibles en nuestras salas</p>
+                <p>Explora todas las peliculas disponibles en nuestras salas</p>
             </div>
 
             <div class="filters-bar">
                 <button class="filter-btn active" data-genre="all">Todos</button>
-                <button class="filter-btn" data-genre="Acción">Acción</button>
-                <button class="filter-btn" data-genre="Ciencia Ficción">Ciencia Ficción</button>
+                <button class="filter-btn" data-genre="Accion">Accion</button>
+                <button class="filter-btn" data-genre="Ciencia Ficcion">Ciencia Ficcion</button>
                 <button class="filter-btn" data-genre="Familia">Familia</button>
                 <button class="filter-btn" data-genre="Terror">Terror</button>
                 <button class="filter-btn" data-genre="Drama">Drama</button>
@@ -99,6 +100,7 @@
         </section>
     </main>
 
+    <!-- Modal de Seleccion de Pelicula / Horarios -->
     <div id="movie-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -107,7 +109,7 @@
     </div>
 
     <footer class="main-footer">
-        <p>© 2026 CineMagic. Disfruta con las personas que más querés con la mejor comodidad.</p>
+        <p>© 2026 CineMagic. Disfruta con las personas que mas queres con la mejor comodidad.</p>
     </footer>
 
     <script src="script.js"></script>
