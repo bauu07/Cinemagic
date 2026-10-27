@@ -78,7 +78,7 @@ function irAButacasDirecto(titulo, horario, precio) {
         precio: precio || 3800
     };
     localStorage.setItem('peliculaSeleccionada', JSON.stringify(seleccion));
-    window.location.href = 'butacas.html';
+    window.location.href = '/Cinemagic/butacas.php';
 }
 
 let bannerIndex = 0;

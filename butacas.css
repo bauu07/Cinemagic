@@ -52,9 +52,9 @@
 
 .seats-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 10px;
-    max-width: 480px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 350px;
     margin: 0 auto 30px auto;
 }
 
@@ -67,8 +67,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
+    color: #fff;
     transition: all 0.2s;
 }
 

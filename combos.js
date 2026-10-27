@@ -64,7 +64,7 @@ function irAlPago() {
     orden.combos = combosElegidos;
     orden.totalFinal = orden.totalEntradas + totalCombos;
     localStorage.setItem('ordenActual', JSON.stringify(orden));
-    window.location.href = 'pago.html';
+    window.location.href = '/Cinemagic/pago.php';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutInfo) {
         checkoutInfo.innerHTML = `
             <p><strong>Pelicula:</strong> ${orden.pelicula}</p>
+            <p><strong>Butacas:</strong> ${orden.butacas ? orden.butacas.join(', ') : 'Ninguna'}</p>
             <h3>Monto Total: $${orden.totalFinal || 0}</h3>
         `;
     }
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('¡Pago realizado con exito! Tu ticket ha sido generado.');
             localStorage.removeItem('ordenActual');
             localStorage.removeItem('peliculaSeleccionada');
-            window.location.href = 'index.html';
+            window.location.href = '/Cinemagic/index.html';
         });
     }
 });

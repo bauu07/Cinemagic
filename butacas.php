@@ -1,3 +1,12 @@
+<?php
+include 'conexion.php';
+
+$id_sala = isset($_GET['sala']) ? intval($_GET['sala']) : 2;
+
+$stmt = $pdo->prepare("SELECT * FROM butacas WHERE id_sala = ?");
+$stmt->execute([$id_sala]);
+$lista_butacas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,9 +23,9 @@
     <header class="main-header">
         <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
             <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
-            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
+            <h1><a href="/Cinemagic/index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
         </div>
-        <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cambiar Pelicula</a>
+        <a href="/Cinemagic/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cambiar Pelicula</a>
     </header>
 
     <main class="contenedor">
@@ -34,7 +43,16 @@
                 <span><i class="seat-sample occupied"></i> Ocupado</span>
             </div>
 
-            <div id="seats-grid" class="seats-grid"></div>
+            <div id="seats-grid" class="seats-grid">
+                <?php foreach ($lista_butacas as $b): ?>
+                    <div class="seat available" 
+                         data-id="<?php echo $b['id_butaca']; ?>" 
+                         data-fila="<?php echo $b['fila']; ?>" 
+                         data-numero="<?php echo $b['numero']; ?>">
+                        <?php echo $b['fila'] . $b['numero']; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
             <div class="seating-summary">
                 <div>
