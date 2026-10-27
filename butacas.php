@@ -23,9 +23,9 @@ $lista_butacas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <header class="main-header">
         <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
             <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
-            <h1><a href="/Cinemagic/index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
         </div>
-        <a href="/Cinemagic/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cambiar Pelicula</a>
+        <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cambiar Pelicula</a>
     </header>
 
     <main class="contenedor">

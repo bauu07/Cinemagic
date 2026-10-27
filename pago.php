@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header class="main-header">
         <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
             <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic">
-            <h1><a href="/Cinemagic/index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
         </div>
-        <a href="/Cinemagic/combos.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Volver a Combos</a>
+        <a href="combos.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Volver a Combos</a>
     </header>
 
     <main class="auth-container">
