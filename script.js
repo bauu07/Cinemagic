@@ -78,7 +78,12 @@ function irAButacasDirecto(titulo, horario, precio) {
         precio: precio || 3800
     };
     localStorage.setItem('peliculaSeleccionada', JSON.stringify(seleccion));
-    window.location.href = '/Cinemagic/butacas.php';
+    window.location.href = 'butacas.html';
+}
+
+function comprarDesdeBanner() {
+    const item = carteleraBanner[bannerIndex];
+    irAButacasDirecto(item.title, '22:00 D-BOX', 4500);
 }
 
 let bannerIndex = 0;
@@ -107,6 +112,7 @@ function initCarousel() {
 }
 
 function updateBannerContent() {
+    if (!bannerDiv) return;
     const item = carteleraBanner[bannerIndex];
     bannerDiv.style.backgroundImage = `url('${item.img}')`;
     titleEl.textContent = item.title;
@@ -162,6 +168,13 @@ if (menuOverlay) {
     });
 }
 
+document.querySelectorAll('#side-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        sideMenu.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+});
+
 function renderEstrenos() {
     const container = document.getElementById('estrenos-container');
     if (!container) return;
@@ -178,7 +191,7 @@ function renderEstrenos() {
                     <span><i class="fa-solid fa-star"></i> ${peli.rating}</span>
                 </div>
                 <p>${peli.desc}</p>
-                <button class="btn btn-primary" onclick="openMovieModal('${peli.title}', '${peli.img}', '${peli.desc}', '${peli.genre}')">
+                <button class="btn btn-primary" onclick="abrirPelicula('estreno', '${peli.id}')">
                     <i class="fa-solid fa-ticket"></i> Ver Horarios y Comprar
                 </button>
             </div>
@@ -194,7 +207,7 @@ function renderCatalogo(filterGenre = 'all') {
         : catalogoPeliculas.filter(p => p.genre === filterGenre);
 
     container.innerHTML = filtered.map(peli => `
-        <article class="movie-card" onclick="openMovieModal('${peli.title}', '${peli.img}', '${peli.desc}', '${peli.genre}')">
+        <article class="movie-card" onclick="abrirPelicula('catalogo', '${peli.id}')">
             <div class="poster-wrap">
                 <img src="${peli.img}" alt="${peli.title}">
                 <span class="rating-badge"><i class="fa-solid fa-star"></i> ${peli.rating}</span>
@@ -222,6 +235,12 @@ const modal = document.getElementById('movie-modal');
 const modalBody = document.getElementById('modal-body');
 const modalClose = document.querySelector('.modal-close');
 
+function abrirPelicula(origen, id) {
+    const lista = origen === 'estreno' ? peliculasNuevas : catalogoPeliculas;
+    const peli = lista.find(p => String(p.id) === String(id));
+    if (peli) openMovieModal(peli.title, peli.img, peli.desc, peli.genre);
+}
+
 function openMovieModal(title, img, desc, genre) {
     if (!modalBody) return;
     modalBody.innerHTML = `
@@ -232,12 +251,17 @@ function openMovieModal(title, img, desc, genre) {
             <p style="color: #ccc; margin: 15px 0;">${desc}</p>
             <h4 style="margin-bottom: 10px;">Selecciona tu Horario:</h4>
             <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                <button class="time-btn" onclick="irAButacasDirecto('${title}', '16:30 2D', 3500)">16:30 2D - $3500</button>
-                <button class="time-btn" onclick="irAButacasDirecto('${title}', '19:15 3D', 4000)">19:15 3D - $4000</button>
-                <button class="time-btn" onclick="irAButacasDirecto('${title}', '22:00 D-BOX', 4500)">22:00 D-BOX - $4500</button>
+                <button class="time-btn" data-horario="16:30 2D" data-precio="3500">16:30 2D - $3500</button>
+                <button class="time-btn" data-horario="19:15 3D" data-precio="4000">19:15 3D - $4000</button>
+                <button class="time-btn" data-horario="22:00 D-BOX" data-precio="4500">22:00 D-BOX - $4500</button>
             </div>
         </div>
     `;
+    modalBody.querySelectorAll('.time-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            irAButacasDirecto(title, btn.dataset.horario, Number(btn.dataset.precio));
+        });
+    });
     modal.classList.add('open');
 }
 

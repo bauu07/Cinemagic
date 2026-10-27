@@ -1,14 +1,3 @@
-<?php
-include 'conexion.php';
-
-$mensaje_exito = "";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre_tarjeta = $_POST['card_name'] ?? '';
-    $numero_tarjeta = $_POST['card_number'] ?? '';
-    
-    $mensaje_exito = "¡Pago procesado con exito para " . htmlspecialchars($nombre_tarjeta) . "!";
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,17 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Ingresa los datos de tu tarjeta para confirmar tus entradas</p>
             </div>
 
-            <?php if (!empty($mensaje_exito)): ?>
-                <div style="background: rgba(46, 204, 113, 0.2); border: 1px solid #2ecc71; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center; color: #2ecc71;">
-                    <?php echo $mensaje_exito; ?>
-                </div>
-            <?php endif; ?>
-
             <div id="checkout-info" class="checkout-info-box">
                 <!-- Se llena con JS -->
             </div>
 
-            <form id="payment-form" method="POST" action="pago.php">
+            <form id="payment-form">
                 <div class="input-group">
                     <label><i class="fa-solid fa-user"></i> Nombre en la Tarjeta</label>
                     <input type="text" id="card-name" name="card_name" placeholder="JUAN PEREZ" required>

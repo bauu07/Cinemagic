@@ -1,12 +1,3 @@
-<?php
-include 'conexion.php';
-
-$id_sala = isset($_GET['sala']) ? intval($_GET['sala']) : 2;
-
-$stmt = $pdo->prepare("SELECT * FROM butacas WHERE id_sala = ?");
-$stmt->execute([$id_sala]);
-$lista_butacas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,16 +34,7 @@ $lista_butacas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <span><i class="seat-sample occupied"></i> Ocupado</span>
             </div>
 
-            <div id="seats-grid" class="seats-grid">
-                <?php foreach ($lista_butacas as $b): ?>
-                    <div class="seat available" 
-                         data-id="<?php echo $b['id_butaca']; ?>" 
-                         data-fila="<?php echo $b['fila']; ?>" 
-                         data-numero="<?php echo $b['numero']; ?>">
-                        <?php echo $b['fila'] . $b['numero']; ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            <div id="seats-grid" class="seats-grid"></div>
 
             <div class="seating-summary">
                 <div>

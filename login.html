@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineMagic - Acceso y Registro</title>
-    <link rel="icon" type="image/png" href="imagenes/Cnlogo.png">
+    <title>CineMagic - Iniciar Sesion</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="auth-body">
 
+    <!-- Encabezado simple de Auth -->
     <header class="main-header">
-        <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
-            <img src="imagenes/Cnlogo.png" class="logo-circular" alt="Logo CineMagic" style="width: 40px; height: 40px; border-radius: 50%;">
-            <h1><a href="index.html" style="color: inherit; text-decoration: none;">Cine<span>Magic</span></a></h1>
+        <div class="logo-area">
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎬 Cine<span>Magic</span></a></h1>
         </div>
-        <a href="index.html" class="btn btn-secondary">
+        <a href="index.html" class="btn btn-secondary" style="padding: 8px 16px;">
             <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
         </a>
     </header>
@@ -24,28 +22,26 @@
     <main class="auth-container">
         <div class="auth-card">
             
+            <!-- Pestanas de Login / Registro -->
             <div class="auth-tabs">
-                <button id="tab-login" class="tab-btn active">
-                    <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesion
-                </button>
-                <button id="tab-register" class="tab-btn">
-                    <i class="fa-solid fa-user-plus"></i> Registrarse
-                </button>
+                <button id="tab-login" class="tab-btn active" onclick="switchAuthTab('login')">Iniciar Sesion</button>
+                <button id="tab-register" class="tab-btn" onclick="switchAuthTab('register')">Registrarse</button>
             </div>
 
-            <form id="form-login" class="auth-form active-form">
+            <!-- FORMULARIO DE INICIO DE SESION -->
+            <form id="form-login" class="auth-form active-form" onsubmit="handleAuthSubmit(event, 'login')">
                 <div class="form-header">
                     <h2>Hola de nuevo!</h2>
-                    <p>Ingresa tus datos para acceder a tu cuenta y sacar tus entradas.</p>
+                    <p>Ingresa tus datos para sacar tus entradas</p>
                 </div>
 
                 <div class="input-group">
-                    <label for="login-email"><i class="fa-solid fa-envelope icon-accent"></i> Correo Electronico</label>
+                    <label for="login-email"><i class="fa-solid fa-envelope"></i> Correo Electronico</label>
                     <input type="email" id="login-email" placeholder="ejemplo@cinemagic.com" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="login-password"><i class="fa-solid fa-lock icon-accent"></i> Contrasena</label>
+                    <label for="login-password"><i class="fa-solid fa-lock"></i> Contrasena</label>
                     <input type="password" id="login-password" placeholder="••••••••" required>
                 </div>
 
@@ -57,33 +53,34 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">
-                    <i class="fa-solid fa-right-to-bracket"></i> Entrar a CineMagic
+                    <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesion
                 </button>
             </form>
 
-            <form id="form-register" class="auth-form">
+            <!-- FORMULARIO DE REGISTRO -->
+            <form id="form-register" class="auth-form" onsubmit="handleAuthSubmit(event, 'register')">
                 <div class="form-header">
                     <h2>Crear una Cuenta</h2>
-                    <p>Sumate a CineMagic para acceder a promociones exclusivas.</p>
+                    <p>Sumate a CineMagic y accede a promociones exclusivas</p>
                 </div>
 
                 <div class="input-group">
-                    <label for="reg-name"><i class="fa-solid fa-user icon-accent"></i> Nombre Completo</label>
+                    <label for="reg-name"><i class="fa-solid fa-user"></i> Nombre Completo</label>
                     <input type="text" id="reg-name" placeholder="Juan Perez" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="reg-email"><i class="fa-solid fa-envelope icon-accent"></i> Correo Electronico</label>
+                    <label for="reg-email"><i class="fa-solid fa-envelope"></i> Correo Electronico</label>
                     <input type="email" id="reg-email" placeholder="ejemplo@cinemagic.com" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="reg-password"><i class="fa-solid fa-lock icon-accent"></i> Contrasena</label>
-                    <input type="password" id="reg-password" placeholder="Minimo 6 caracteres" required minlength="6">
+                    <label for="reg-password"><i class="fa-solid fa-lock"></i> Contrasena</label>
+                    <input type="password" id="reg-password" placeholder="••••••••" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">
-                    <i class="fa-solid fa-user-check"></i> Crear Mi Cuenta
+                    <i class="fa-solid fa-user-plus"></i> Crear Cuenta
                 </button>
             </form>
 
@@ -94,6 +91,35 @@
         <p>© 2026 CineMagic. Disfruta con las personas que mas queres con la mejor comodidad.</p>
     </footer>
 
-    <script src="login.js"></script>
+    <script>
+        function switchAuthTab(type) {
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+
+            if (type === 'login') {
+                tabLogin.classList.add('active');
+                tabRegister.classList.remove('active');
+                formLogin.classList.add('active-form');
+                formRegister.classList.remove('active-form');
+            } else {
+                tabRegister.classList.add('active');
+                tabLogin.classList.remove('active');
+                formRegister.classList.add('active-form');
+                formLogin.classList.remove('active-form');
+            }
+        }
+
+        function handleAuthSubmit(event, type) {
+            event.preventDefault();
+            if (type === 'login') {
+                alert('Sesion iniciada con exito! Redirigiendo a la cartelera...');
+            } else {
+                alert('Cuenta creada con exito! Redirigiendo a la cartelera...');
+            }
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
